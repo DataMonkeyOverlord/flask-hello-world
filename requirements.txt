@@ -1,2 +1,3 @@
 Flask
 Gunicorn
+psycopg2==2.9.5
