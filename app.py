@@ -25,8 +25,8 @@ def make_db():
             Number int
             );
      ''')
-    con.commit()
-    con.close()
+    conn.commit()
+    conn.close()
     return 'Basketball Table Sucessfully Created!'
 
 
@@ -40,8 +40,8 @@ def insert_db():
         ('Stephen', 'Curry', 'San Francisco', 'Warriors', 30),
         ('Nikola', 'Jokic', 'Denver', 'Nuggets', 15),
         ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2);'''
-    con.commit()
-    con.close()
+    conn.commit()
+    conn.close()
     return 'Basketball Table Sucessfully Populated!'
                 
                 
@@ -51,7 +51,7 @@ def select_db():
     cur = conn.cursor()
     cur.execute('''SELECT * FROM Basketball;'''
     records = cur.fetchall()             
-    con.close()
+    conn.close()
     response_string = ""
     response_string += '<table>'
         for player in records:
@@ -69,7 +69,7 @@ def drop_db():
     cur = conn.cursor()
     cur.execute('''DROP TABLE Basketball;'''       
     cur.commit()
-    con.close()  
+    conn.close()  
     return "Basketball Table Sucessfully Dropped"                  
                 
 
