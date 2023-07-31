@@ -51,7 +51,6 @@ def select_db():
     cur = conn.cursor()
     cur.execute('''SELECT * FROM Basketball;'''
     records = cur.fetchall()             
-    conn.close()
     response_string = ""
     response_string += '<table>'
         for player in records:
@@ -59,7 +58,8 @@ def select_db():
              for info in player:
                 response_string += "<td>{}</td>".format(info)
              response_string+="</tr>"
-         response_string+="</table>"       
+         response_string+="</table>"                
+    conn.close()            
     return response_string     
                 
                 
@@ -68,7 +68,7 @@ def drop_db():
     conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a.oregon-    postgres.render.com/bh_123")
     cur = conn.cursor()
     cur.execute('''DROP TABLE Basketball;'''       
-    cur.commit()
+    conn.commit()
     conn.close()  
     return "Basketball Table Sucessfully Dropped"                  
                 
