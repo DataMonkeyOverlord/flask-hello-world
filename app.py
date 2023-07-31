@@ -8,13 +8,13 @@ def hello_world():
 
 @app.route('/db_test')
 def testing():
-    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a.oregon-postgres.render.com/bh_123")
+    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a/bh_123")
     conn.close()
     return 'Database Connection Sucessful!'
 
 @app.route('/db_create')
 def make_db():
-    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a.oregon-    postgres.render.com/bh_123")
+    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a/bh_123")
     cur = conn.cursor()
     cur.execute('''
         CREATE TABLE IF NOT EXISTS Basketball(
@@ -23,8 +23,7 @@ def make_db():
             City varchar(255),
             Name varchar(255),
             Number int
-            );
-     ''')
+            );''')
     conn.commit()
     conn.close()
     return 'Basketball Table Sucessfully Created!'
@@ -32,7 +31,7 @@ def make_db():
 
 @app.route('/db_insert')
 def insert_db():
-    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a.oregon-    postgres.render.com/bh_123")
+    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a/bh_123")
     cur = conn.cursor()
     cur.execute('''INSERT INTO Basketball (First, Last, City, Name, Number)
     Values
@@ -47,7 +46,7 @@ def insert_db():
                 
 @app.route('/db_select')
 def select_db():
-    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a.oregon-    postgres.render.com/bh_123")
+    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a/bh_123")
     cur = conn.cursor()
     cur.execute('''SELECT * FROM Basketball;''')
     records = cur.fetchall()             
@@ -65,7 +64,7 @@ def select_db():
                 
 @app.route('/db_drop')
 def drop_db():
-    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a.oregon-    postgres.render.com/bh_123")
+    conn = psycopg2.connect("postgres://bh_123_user:9UbstWz5lrwnwNuF62Xr8qHD2jjHH0rj@dpg-cj232pc07spkp67l4cqg-a/bh_123")
     cur = conn.cursor()
     cur.execute('''DROP TABLE Basketball;''')      
     conn.commit()
